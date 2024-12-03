@@ -4,7 +4,7 @@
   "description": "'devtinder backend apis",
   "main": "index.js",
   "scripts": {
-    "start": "npm index.js",
+    "start": "node index.js",
     "dev": "npx nodemon index.js"
   },
   "author": "Akshay Gelani",
