@@ -4,8 +4,8 @@
   "description": "'devtinder backend apis",
   "main": "index.js",
   "scripts": {
-    "start": "npx nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm index.js",
+    "dev": "npx nodemon index.js"
   },
   "author": "Akshay Gelani",
   "license": "ISC",
