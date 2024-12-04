@@ -1,6 +1,6 @@
-const express = require('express');
-const connectDB = require('./src/config/database');
-const { PORT } = require('./src/utils/constants');
+import express from 'express';
+import { connectDB } from './src/config/database.js';
+import { PORT } from './src/utils/constants.js';
 const app = express();
 
 connectDB()

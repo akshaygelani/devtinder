@@ -1,8 +1,6 @@
-const mongoose = require('mongoose');
-const { MONGODB_CONNECTION_STRING } = require('../utils/constants');
+import mongoose from 'mongoose';
+import { MONGODB_CONNECTION_STRING } from '../utils/constants.js';
 
-const connectDB = async () => {
+export const connectDB = async () => {
   await mongoose.connect(MONGODB_CONNECTION_STRING);
 };
-
-module.exports = connectDB;
