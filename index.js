@@ -3,6 +3,8 @@ import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
 const app = express();
 
+console.clear();
+
 connectDB()
   .then(() => {
     console.log('MongoDB Database Connected!!');
