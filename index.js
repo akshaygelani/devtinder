@@ -1,9 +1,26 @@
 import express from 'express';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
+import { userModel } from './src/models/user.js';
 const app = express();
 
 console.clear();
+
+app.post('/signup', async (req, res, next) => {
+  const data = {
+    firstName: 'Akshay',
+    lastName: 'Gelani',
+    email: 'akshay@gmail.com',
+    password: '1234567890',
+  };
+  const user = new userModel(data);
+  try {
+  } catch (error) {
+    console.log('Oops Error:', error.message);
+  }
+  await user.save();
+  res.send('user saved successfully');
+});
 
 connectDB()
   .then(() => {
