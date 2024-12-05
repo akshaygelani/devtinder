@@ -11,7 +11,7 @@ app.post('/signup', async (req, res, next) => {
     firstName: 'Akshay',
     lastName: 'Gelani',
     email: 'akshay@gmail.com',
-    password: '1234567890',
+    password: '123456789',
   };
   const user = new userModel(data);
   try {
