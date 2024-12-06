@@ -8,13 +8,7 @@ console.clear();
 
 app.use(express.json());
 app.post('/signup', async (req, res, next) => {
-  const data = {
-    firstName: 'Akshay',
-    lastName: 'Gelani',
-    email: 'akshay@gmail.com',
-    password: '123456789',
-  };
-  const user = new userModel(data);
+  const user = new userModel(req.body);
   try {
   } catch (error) {
     console.log('Oops Error:', error.message);
