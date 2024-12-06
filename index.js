@@ -6,6 +6,7 @@ const app = express();
 
 console.clear();
 
+app.use(express.json());
 app.post('/signup', async (req, res, next) => {
   const data = {
     firstName: 'Akshay',
