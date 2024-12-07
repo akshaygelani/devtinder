@@ -4,7 +4,7 @@ export const listUserHandler = async (req, res) => {
   try {
     const users = await userModel.find({});
     if (users.length == 0) {
-      res.send(404).send('No records found');
+      res.status(404).send('No records found');
     } else {
       res.status(200).send(users);
     }
