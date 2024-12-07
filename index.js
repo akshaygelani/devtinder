@@ -7,6 +7,7 @@ import {
   getUserHandler,
   listUserHandler,
   deleteUserHandler,
+  patchUserHandler,
 } from './src/handlers/user/index.js';
 const app = express();
 
@@ -23,6 +24,7 @@ app.post('/user', postUserHandler);
 app.get('/user/', listUserHandler);
 app.get('/user/:userId', getUserHandler);
 app.delete('/user/:userId', deleteUserHandler);
+app.patch('/user/:userId', patchUserHandler);
 
 connectDB()
   .then(() => {
