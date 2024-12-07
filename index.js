@@ -1,13 +1,13 @@
 import express from 'express';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
-import { signUpHandler } from './src/handlers/auth/signup.js';
+import { postUserHandler } from './src/handlers/user/index.js';
 const app = express();
 
 console.clear();
 
 app.use(express.json());
-app.post('/signup', signUpHandler);
+app.post('/signup', postUserHandler);
 
 connectDB()
   .then(() => {
