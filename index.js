@@ -6,6 +6,7 @@ import {
   postUserHandler,
   getUserHandler,
   listUserHandler,
+  deleteUserHandler,
 } from './src/handlers/user/index.js';
 const app = express();
 
@@ -19,8 +20,9 @@ app.post('/signup', signUpHandler);
 
 // User Middlewares
 app.post('/user', postUserHandler);
-app.get('/user/:userId', getUserHandler);
 app.get('/user/', listUserHandler);
+app.get('/user/:userId', getUserHandler);
+app.delete('/user/:userId', deleteUserHandler);
 
 connectDB()
   .then(() => {
