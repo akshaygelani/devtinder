@@ -2,7 +2,11 @@ import express from 'express';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
 import { signUpHandler } from './src/handlers/auth/index.js';
-import { postUserHandler, getUserHandler } from './src/handlers/user/index.js';
+import {
+  postUserHandler,
+  getUserHandler,
+  listUserHandler,
+} from './src/handlers/user/index.js';
 const app = express();
 
 console.clear();
@@ -16,6 +20,7 @@ app.post('/signup', signUpHandler);
 // User Middlewares
 app.post('/user', postUserHandler);
 app.get('/user/:userId', getUserHandler);
+app.get('/user/', listUserHandler);
 
 connectDB()
   .then(() => {
