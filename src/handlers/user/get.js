@@ -3,7 +3,7 @@ import { userModel } from '../../models/user.js';
 export const getUserHandler = async (req, res) => {
   const { userId } = req.params;
   try {
-    const user = await userModel.findById({ _id: userId });
+    const user = await userModel.findById(userId);
     if (user.length == 0) {
       res.send(404).send('User not found');
     }
