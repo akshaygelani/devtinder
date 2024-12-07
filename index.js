@@ -1,13 +1,21 @@
 import express from 'express';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
-import { postUserHandler } from './src/handlers/user/index.js';
+import { signUpHandler } from './src/handlers/auth/index.js';
+import { postUserHandler, getUserHandler } from './src/handlers/user/index.js';
 const app = express();
 
 console.clear();
 
+// Middleware to parse json from requests
 app.use(express.json());
-app.post('/signup', postUserHandler);
+
+// Auth Middlewares
+app.post('/signup', signUpHandler);
+
+// User Middlewares
+app.post('/user', postUserHandler);
+app.get('/user/:userId', getUserHandler);
 
 connectDB()
   .then(() => {
