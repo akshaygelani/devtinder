@@ -44,6 +44,16 @@ const userSchema = new Schema(
       minLength: 8,
       maxLength: 50,
     },
+    skills: {
+      type: [
+        {
+          type: String,
+          trim: true,
+        },
+      ],
+      trim: true,
+      default: ['Javascript', 'Coding', 'Problem Solving'],
+    },
   },
   {
     timestamps: true,
