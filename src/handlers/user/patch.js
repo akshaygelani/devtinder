@@ -4,7 +4,9 @@ export const patchUserHandler = async (req, res) => {
   try {
     const userId = req.userId;
     const body = req.body;
-    await userModel.findOneAndUpdate(userId, body);
+    await userModel.findOneAndUpdate(userId, body, {
+      runValidators: true,
+    });
     res.status(202).send('Record updated successfully!');
   } catch (error) {
     console.log('Oops Error:', error.message);
