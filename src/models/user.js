@@ -58,6 +58,7 @@ const userSchema = new Schema(
       type: String,
       maxLength: 500,
       trim: true,
+      unique: true,
       default: 'https://akshaygelani.me/assets/images/profile.webp',
       validate: {
         validator: (url) => validator.isURL(url),
