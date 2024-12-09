@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import validator from 'validator';
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema(
@@ -19,6 +20,7 @@ const userSchema = new Schema(
     age: {
       type: Number,
       min: 18,
+      max: 100,
     },
     gender: {
       type: String,
@@ -30,11 +32,9 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
+      maxLength: 50,
       validate: {
-        validator: (email) => {
-          const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-          return regex.test(email);
-        },
+        validator: (email) => validator.isEmail(email),
         message: (props) => `${props.value} email is not valid!`,
       },
     },
@@ -43,12 +43,16 @@ const userSchema = new Schema(
       trim: true,
       minLength: 8,
       maxLength: 50,
+      validate: {
+        validator: (password) => validator.isStrongPassword(password),
+      },
     },
     skills: {
       type: [
         {
           type: String,
           trim: true,
+          maxLength: 10,
         },
       ],
       trim: true,
