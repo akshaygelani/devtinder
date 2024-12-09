@@ -25,6 +25,7 @@ const userSchema = new Schema(
     gender: {
       type: String,
       enum: ['male', 'female', 'other'],
+      trim: true,
     },
     email: {
       type: String,
@@ -45,6 +46,21 @@ const userSchema = new Schema(
       maxLength: 50,
       validate: {
         validator: (password) => validator.isStrongPassword(password),
+      },
+    },
+    about: {
+      type: String,
+      maxLength: 300,
+      default: '',
+      trim: true,
+    },
+    photoUrl: {
+      type: String,
+      maxLength: 500,
+      trim: true,
+      default: 'https://akshaygelani.me/assets/images/profile.webp',
+      validate: {
+        validator: (url) => validator.isURL(url),
       },
     },
     skills: {
