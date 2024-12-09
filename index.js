@@ -1,7 +1,7 @@
 import express from 'express';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
-import { signUpHandler } from './src/handlers/auth/index.js';
+import { signInHandler, signUpHandler } from './src/handlers/auth/index.js';
 import {
   postUserHandler,
   getUserHandler,
@@ -18,6 +18,7 @@ app.use(express.json());
 
 // Auth Middlewares
 app.post('/signup', signUpHandler);
+app.post('/signin', signInHandler);
 
 // User Middlewares
 app.post('/user', postUserHandler);
