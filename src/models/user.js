@@ -68,11 +68,16 @@ const userSchema = new Schema(
         {
           type: String,
           trim: true,
-          maxLength: 10,
         },
       ],
       trim: true,
       default: ['Javascript', 'Coding', 'Problem Solving'],
+      validate: {
+        validator: (arr) => {
+          return arr.length < 11;
+        },
+        message: (props) => `Maximum 10 Skills are allowed [${props.value}]`,
+      },
     },
   },
   {
