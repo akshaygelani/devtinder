@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
+import jwt from 'jsonwebtoken';
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema(
@@ -80,5 +81,13 @@ const userSchema = new Schema(
     timestamps: true,
   }
 );
+
+userSchema.method('getJWT', function () {
+  // generate JWT Token
+  const access_token = jwt.sign({ id: this._id }, 'asb@344', {
+    expiresIn: '1d',
+  });
+  return access_token;
+});
 
 export const userModel = model('User', userSchema);

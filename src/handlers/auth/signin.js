@@ -1,6 +1,5 @@
 import { userModel } from '../../models/user.js';
 import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
 
 export const signInHandler = async (req, res) => {
   try {
@@ -20,10 +19,8 @@ export const signInHandler = async (req, res) => {
       return res.status(400).send('Invalid Credentials!');
     }
 
-    // Generate JWT Token and wrap it inside cookie
-    const access_token = jwt.sign({ id: existingUser._id }, 'asb@344', {
-      expiresIn: '1d',
-    });
+    // get JWT from schema methods
+    const access_token = existingUser.getJWT();
 
     // Add cookie in Response
     // cookie expire after 15 min
