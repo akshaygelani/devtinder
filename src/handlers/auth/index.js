@@ -1,4 +1,5 @@
-import { signInHandler } from './signin.js';
 import { signUpHandler } from './signup.js';
+import { signInHandler } from './signin.js';
+import { signOutHandler } from './signout.js';
 
-export { signInHandler, signUpHandler };
+export { signUpHandler, signInHandler, signOutHandler };
