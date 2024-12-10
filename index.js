@@ -2,7 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
-import { authRouter, userRouter } from './src/routes/index.js';
+import { authRouter, profileRouter, userRouter } from './src/routes/index.js';
 
 const app = express();
 console.clear();
@@ -13,6 +13,7 @@ app.use(cookieParser());
 
 // Route Handlers
 app.use('/auth', authRouter);
+app.use('/profile', profileRouter);
 app.use('/user', userRouter);
 
 connectDB()

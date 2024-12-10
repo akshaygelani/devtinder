@@ -16,7 +16,7 @@ export const verifyAuthentication = async (req, res, next) => {
     if (!user) {
       return res.status(400).send('Unauthorized!');
     } else {
-      req.user = user;
+      req.loggedInUser = user;
     }
 
     // continue executing other middlewares
