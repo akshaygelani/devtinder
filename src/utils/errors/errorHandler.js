@@ -1,4 +1,5 @@
 import { IS_PROD } from '../constants.js';
+import { internalError } from '../responses.js';
 
 export const errorHandler = (err, req, res, next) => {
   console.error('----- Error Start');
@@ -11,5 +12,5 @@ export const errorHandler = (err, req, res, next) => {
     ? 'Oops, Internal Server Error! Please contact the administrator.'
     : err.message;
 
-  res.status(500).json({ message: responseMessage });
+  return internalError(res, responseMessage);
 };
