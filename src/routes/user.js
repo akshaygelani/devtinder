@@ -6,8 +6,8 @@ import {
   deleteUserHandler,
   patchUserHandler,
 } from '../handlers/user/index.js';
-import { verifyAuthentication } from '../middleware/auth/authentication.js';
-import { asyncHandler } from '../middleware/utils/asyncHandler.js';
+import { verifyAuthentication } from '../middleware/authentication.js';
+import { asyncHandler } from '../utils/errors/asyncHandler.js';
 
 export const userRouter = express.Router();
 

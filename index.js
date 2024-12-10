@@ -3,7 +3,7 @@ import cookieParser from 'cookie-parser';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
 import { authRouter, profileRouter, userRouter } from './src/routes/index.js';
-import { errorHandler } from './src/middleware/utils/error.js';
+import { errorHandler } from './src/utils/errors/errorHandler.js';
 const app = express();
 
 // Middlewares to parse json and cookie from requests

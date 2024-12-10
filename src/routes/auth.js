@@ -4,7 +4,7 @@ import {
   signInHandler,
   signOutHandler,
 } from '../handlers/auth/index.js';
-import { asyncHandler } from '../middleware/utils/asyncHandler.js';
+import { asyncHandler } from '../utils/errors/asyncHandler.js';
 
 export const authRouter = express.Router();
 

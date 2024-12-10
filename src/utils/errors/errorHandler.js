@@ -1,4 +1,4 @@
-import { IS_PROD } from '../../utils/constants.js';
+import { IS_PROD } from '../constants.js';
 
 export const errorHandler = (err, req, res, next) => {
   console.error('----- Error Start');
