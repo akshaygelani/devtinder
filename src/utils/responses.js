@@ -1,7 +1,21 @@
+// Default messages for success responses
+const M_SUCCESS = 'Request was successful.';
+const M_CREATED = 'Resource created successfully.';
+const M_ACCEPTED = 'Request accepted for processing.';
+const M_NO_CONTENT = 'No content to return.';
+
+// Default messages for error responses
+const M_BAD_REQUEST = 'Bad request. Please check your input.';
+const M_UNAUTHORIZED = 'Unauthorized. Authentication required.';
+const M_FORBIDDEN = 'Forbidden. You do not have permission to access this resource.';
+const M_NOT_FOUND = 'Resource not found.';
+const M_CONFLICT = 'Conflict occurred. Resource already exists.';
+const M_INTERNAL_ERROR = 'Internal server error. Please try again later.';
+
 // SUCCESS RESPONSES
 
 // 200 - OK
-export const success = (res, message, data = null, pagination = null) => {
+export const success = (res, message = M_SUCCESS, data = null, pagination = null) => {
   const response = {
     success: true,
     statusCode: 200,
@@ -14,7 +28,7 @@ export const success = (res, message, data = null, pagination = null) => {
 };
 
 // 201 - Created
-export const created = (res, message, data = null) => {
+export const created = (res, message = M_CREATED, data = null) => {
   const response = {
     success: true,
     statusCode: 201,
@@ -26,7 +40,7 @@ export const created = (res, message, data = null) => {
 };
 
 // 202 - Accepted
-export const accepted = (res, message, data = null) => {
+export const accepted = (res, message = M_ACCEPTED, data = null) => {
   const response = {
     success: true,
     statusCode: 202,
@@ -38,7 +52,7 @@ export const accepted = (res, message, data = null) => {
 };
 
 // 204 - No Content
-export const noContent = (res, message) => {
+export const noContent = (res, message = M_NO_CONTENT) => {
   return res.status(204).json({
     success: true,
     statusCode: 204,
@@ -49,7 +63,7 @@ export const noContent = (res, message) => {
 // ERROR RESPONSES
 
 // 400 - Bad Request
-export const badRequest = (res, message, errors = null) => {
+export const badRequest = (res, message = M_BAD_REQUEST, errors = null) => {
   const response = {
     success: false,
     statusCode: 400,
@@ -61,7 +75,7 @@ export const badRequest = (res, message, errors = null) => {
 };
 
 // 401 - Unauthorized
-export const unauthorized = (res, message, errors = null) => {
+export const unauthorized = (res, message = M_UNAUTHORIZED, errors = null) => {
   const response = {
     success: false,
     statusCode: 401,
@@ -73,7 +87,7 @@ export const unauthorized = (res, message, errors = null) => {
 };
 
 // 403 - Forbidden
-export const forbidden = (res, message, errors = null) => {
+export const forbidden = (res, message = M_FORBIDDEN, errors = null) => {
   const response = {
     success: false,
     statusCode: 403,
@@ -85,7 +99,7 @@ export const forbidden = (res, message, errors = null) => {
 };
 
 // 404 - Not Found
-export const notFound = (res, message, errors = null) => {
+export const notFound = (res, message = M_NOT_FOUND, errors = null) => {
   const response = {
     success: false,
     statusCode: 404,
@@ -97,7 +111,7 @@ export const notFound = (res, message, errors = null) => {
 };
 
 // 409 - Conflict (e.g., Duplicate Resource)
-export const conflict = (res, message, errors = null) => {
+export const conflict = (res, message = M_CONFLICT, errors = null) => {
   const response = {
     success: false,
     statusCode: 409,
@@ -109,7 +123,7 @@ export const conflict = (res, message, errors = null) => {
 };
 
 // 500 - Internal Server Error
-export const internalError = (res, message, errors = null) => {
+export const internalError = (res, message = M_INTERNAL_ERROR, errors = null) => {
   const response = {
     success: false,
     statusCode: 500,
