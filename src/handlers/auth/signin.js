@@ -1,5 +1,4 @@
 import { userModel } from '../../models/user.js';
-import bcrypt from 'bcrypt';
 
 export const signInHandler = async (req, res) => {
   try {
@@ -11,10 +10,7 @@ export const signInHandler = async (req, res) => {
       return res.status(400).send('Invalid Credentials!');
     }
 
-    let isPasswordCorrect = await bcrypt.compare(
-      password,
-      existingUser.password
-    );
+    let isPasswordCorrect = await existingUser.comparePassword(password);
     if (!isPasswordCorrect) {
       return res.status(400).send('Invalid Credentials!');
     }

@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+
 const { Schema, model } = mongoose;
 
 const userSchema = new Schema(
@@ -82,6 +84,7 @@ const userSchema = new Schema(
   }
 );
 
+// Below are two ways to add schema methods
 userSchema.method('getJWT', function () {
   // generate JWT Token
   const access_token = jwt.sign({ id: this._id }, 'asb@344', {
@@ -89,5 +92,14 @@ userSchema.method('getJWT', function () {
   });
   return access_token;
 });
+
+userSchema.methods.comparePassword = async function (passwordInputByUser) {
+  // compare user provided password and password hash
+  let isPasswordCorrect = await bcrypt.compare(
+    passwordInputByUser,
+    this.password
+  );
+  return isPasswordCorrect;
+};
 
 export const userModel = model('User', userSchema);
