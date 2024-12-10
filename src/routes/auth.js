@@ -4,9 +4,10 @@ import {
   signInHandler,
   signOutHandler,
 } from '../handlers/auth/index.js';
+import { asyncHandler } from '../middleware/utils/asyncHandler.js';
 
 export const authRouter = express.Router();
 
-authRouter.post('/signup', signUpHandler);
-authRouter.post('/signin', signInHandler);
-authRouter.post('/signout', signOutHandler);
+authRouter.post('/signup', asyncHandler(signUpHandler));
+authRouter.post('/signin', asyncHandler(signInHandler));
+authRouter.post('/signout', asyncHandler(signOutHandler));

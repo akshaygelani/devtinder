@@ -4,8 +4,10 @@ import {
   patchProfileHandler,
 } from '../handlers/profile/index.js';
 import { verifyAuthentication } from '../middleware/auth/authentication.js';
+import { asyncHandler } from '../middleware/utils/asyncHandler.js';
+
 export const profileRouter = express.Router();
 
-profileRouter.use('/', verifyAuthentication);
-profileRouter.get('/', getProfileHandler);
-profileRouter.patch('/', patchProfileHandler);
+profileRouter.use('/', asyncHandler(verifyAuthentication));
+profileRouter.get('/', asyncHandler(getProfileHandler));
+profileRouter.patch('/', asyncHandler(patchProfileHandler));
