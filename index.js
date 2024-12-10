@@ -2,8 +2,8 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
+import { authRouter } from './src/routes/index.js';
 import { verifyAuthentication } from './src/middleware/auth/authentication.js';
-import { signInHandler, signUpHandler } from './src/handlers/auth/index.js';
 import {
   postUserHandler,
   getUserHandler,
@@ -20,8 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Auth Middlewares
-app.post('/signup', signUpHandler);
-app.post('/signin', signInHandler);
+app.use('/auth', authRouter);
 
 // User Middlewares
 app.use('/user', verifyAuthentication);
