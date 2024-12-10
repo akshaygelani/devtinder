@@ -1,2 +1,4 @@
 import { getProfileHandler } from './get.js';
-export { getProfileHandler };
+import { patchProfileHandler } from './patch.js';
+
+export { getProfileHandler, patchProfileHandler };
