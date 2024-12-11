@@ -1,5 +1,6 @@
 import { requestModel } from '../../models/request.js';
 import { success } from '../../utils/responses.js';
+
 const USER_SAFE_DATA = ['firstName', 'lastName', 'age', 'gender', 'about', 'skills', 'photoUrl'];
 
 export const getPendingRequestsHandler = async (req, res) => {

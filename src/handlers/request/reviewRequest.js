@@ -28,7 +28,7 @@ export const reviewRequestHandler = async (req, res) => {
   });
 
   if (!request) {
-    return badRequest(res, 'requestId not found');
+    return badRequest(res, 'Invalid requestId');
   }
 
   request.status = action;
