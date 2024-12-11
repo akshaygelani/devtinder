@@ -23,4 +23,15 @@ const connectionRequestSchema = new Schema(
   }
 );
 
+// Added for learning,- optional. we have already handled this in handler
+connectionRequestSchema.pre('save', function (next) {
+  if (this.fromUserId.equals(this.toUserId)) {
+    const error = new Error(
+      'Error from schema validation pre hook - Cannot send connection request to self'
+    );
+    return next(error);
+  }
+  next();
+});
+
 export const requestModel = model('Request', connectionRequestSchema);
