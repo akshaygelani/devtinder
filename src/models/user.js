@@ -56,7 +56,6 @@ const userSchema = new Schema(
       type: String,
       maxLength: 500,
       trim: true,
-      unique: true,
       default: 'https://akshaygelani.me/assets/images/profile.webp',
       validate: {
         validator: (url) => validator.isURL(url),
@@ -95,10 +94,7 @@ userSchema.method('getJWT', function () {
 
 userSchema.methods.comparePassword = async function (passwordInputByUser) {
   // compare user provided password and password hash
-  let isPasswordCorrect = await bcrypt.compare(
-    passwordInputByUser,
-    this.password
-  );
+  let isPasswordCorrect = await bcrypt.compare(passwordInputByUser, this.password);
   return isPasswordCorrect;
 };
 
