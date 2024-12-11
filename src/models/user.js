@@ -86,7 +86,7 @@ const userSchema = new Schema(
 // Below are two ways to add schema methods
 userSchema.method('getJWT', function () {
   // generate JWT Token
-  const access_token = jwt.sign({ id: this._id }, 'asb@344', {
+  const access_token = jwt.sign({ id: this.id }, 'asb@344', {
     expiresIn: '1d',
   });
   return access_token;
