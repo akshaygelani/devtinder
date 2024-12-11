@@ -5,6 +5,7 @@ import {
   listUserHandler,
   deleteUserHandler,
   patchUserHandler,
+  getPendingRequestsHandler,
 } from '../handlers/user/index.js';
 import { verifyAuthentication } from '../middleware/authentication.js';
 import { asyncHandler } from '../utils/errors/asyncHandler.js';
@@ -20,3 +21,4 @@ userRouter.get('/', asyncHandler(listUserHandler));
 userRouter.get('/:userId', asyncHandler(getUserHandler));
 userRouter.delete('/:userId', asyncHandler(deleteUserHandler));
 userRouter.patch('/:userId', asyncHandler(patchUserHandler));
+userRouter.get('/requests/pending', asyncHandler(getPendingRequestsHandler));

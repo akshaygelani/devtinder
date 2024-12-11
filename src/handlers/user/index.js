@@ -3,6 +3,7 @@ import { getUserHandler } from './get.js';
 import { listUserHandler } from './list.js';
 import { deleteUserHandler } from './delete.js';
 import { patchUserHandler } from './patch.js';
+import { getPendingRequestsHandler } from './getPendingRequests.js';
 
 export {
   postUserHandler,
@@ -10,4 +11,5 @@ export {
   listUserHandler,
   deleteUserHandler,
   patchUserHandler,
+  getPendingRequestsHandler,
 };
