@@ -5,6 +5,7 @@ import {
   listUserHandler,
   deleteUserHandler,
   patchUserHandler,
+  getConnectionsHandler,
   getPendingRequestsHandler,
 } from '../handlers/user/index.js';
 import { verifyAuthentication } from '../middleware/authentication.js';
@@ -16,9 +17,10 @@ export const userRouter = express.Router();
 userRouter.use('/', asyncHandler(verifyAuthentication));
 
 // TODO: Add Middleware to check admin role.
+userRouter.get('/connections', asyncHandler(getConnectionsHandler));
+userRouter.get('/requests/pending', asyncHandler(getPendingRequestsHandler));
 userRouter.post('/', asyncHandler(postUserHandler));
 userRouter.get('/', asyncHandler(listUserHandler));
 userRouter.get('/:userId', asyncHandler(getUserHandler));
 userRouter.delete('/:userId', asyncHandler(deleteUserHandler));
 userRouter.patch('/:userId', asyncHandler(patchUserHandler));
-userRouter.get('/requests/pending', asyncHandler(getPendingRequestsHandler));
