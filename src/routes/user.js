@@ -7,6 +7,7 @@ import {
   patchUserHandler,
   getConnectionsHandler,
   getPendingRequestsHandler,
+  getUserFeedHandler,
 } from '../handlers/user/index.js';
 import { verifyAuthentication } from '../middleware/authentication.js';
 import { asyncHandler } from '../utils/errors/asyncHandler.js';
@@ -19,6 +20,7 @@ userRouter.use('/', asyncHandler(verifyAuthentication));
 // TODO: Add Middleware to check admin role.
 userRouter.get('/connections', asyncHandler(getConnectionsHandler));
 userRouter.get('/requests/pending', asyncHandler(getPendingRequestsHandler));
+userRouter.get('/feed', asyncHandler(getUserFeedHandler));
 userRouter.post('/', asyncHandler(postUserHandler));
 userRouter.get('/', asyncHandler(listUserHandler));
 userRouter.get('/:userId', asyncHandler(getUserHandler));
