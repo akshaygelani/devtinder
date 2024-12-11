@@ -10,7 +10,7 @@ export const verifyAuthentication = async (req, res, next) => {
   }
   let payload = jwt.verify(access_token, 'asb@344');
   if (!payload) {
-    return badRequest('Invalid Token');
+    return badRequest(res, 'Invalid Token');
   }
 
   // find user and verify id
