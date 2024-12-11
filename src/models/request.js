@@ -23,6 +23,9 @@ const connectionRequestSchema = new Schema(
   }
 );
 
+// compound index
+connectionRequestSchema.index({ fromUserId: 1, toUserId: 1 });
+
 // Added for learning,- optional. we have already handled this in handler
 connectionRequestSchema.pre('save', function (next) {
   if (this.fromUserId.equals(this.toUserId)) {
