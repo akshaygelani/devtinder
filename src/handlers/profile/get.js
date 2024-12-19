@@ -1,4 +1,6 @@
+import { success } from '../../utils/responses';
+
 export const getProfileHandler = (req, res) => {
   let loggedInUser = req.loggedInUser;
-  res.status(200).send(loggedInUser);
+  return success(res, null, loggedInUser);
 };
