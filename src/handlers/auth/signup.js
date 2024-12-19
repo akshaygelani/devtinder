@@ -1,4 +1,5 @@
 import { userModel } from '../../models/user.js';
+import { success, badRequest } from '../../utils/responses.js';
 import bcrypt from 'bcrypt';
 
 export const signUpHandler = async (req, res) => {
@@ -8,7 +9,7 @@ export const signUpHandler = async (req, res) => {
   const existingUser = await userModel.findOne({ email: email });
 
   if (existingUser) {
-    return res.status(400).send('Invalid body!');
+    return badRequest(res, 'Invalid body');
   }
 
   // hash the password with auto generated salt
@@ -21,5 +22,5 @@ export const signUpHandler = async (req, res) => {
   });
 
   await user.save();
-  res.status(200).send('Signup Successful!');
+  return success(res, 'Signup Successful!');
 };
