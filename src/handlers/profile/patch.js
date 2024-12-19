@@ -1,4 +1,4 @@
-import { success, badRequest } from '../../utils/responses';
+import { success, badRequest } from '../../utils/responses.js';
 
 export const patchProfileHandler = async (req, res) => {
   let allowedUpdates = ['firstName', 'lastName', 'age', 'gender', 'photoUrl', 'about', 'skills'];

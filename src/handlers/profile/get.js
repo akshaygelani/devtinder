@@ -1,4 +1,4 @@
-import { success } from '../../utils/responses';
+import { success } from '../../utils/responses.js';
 
 export const getProfileHandler = (req, res) => {
   let loggedInUser = req.loggedInUser;

@@ -1,4 +1,4 @@
-import { success } from '../../utils/responses';
+import { success } from '../../utils/responses.js';
 
 export const signOutHandler = (req, res) => {
   res.cookie('access_token', null, {
