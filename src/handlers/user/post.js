@@ -1,8 +1,28 @@
 import { userModel } from '../../models/user.js';
+import { badRequest, success } from '../../utils/responses.js';
+import bcrypt from 'bcrypt';
 
 export const postUserHandler = async (req, res) => {
-  // TODO: sanitize data, add validations and hash password
-  const user = new userModel(req.body);
+  const { firstName, lastName, email, password, age, gender, about, photoUrl, skills } = req.body;
+
+  const existingUser = await userModel.findOne({ email: email });
+  if (existingUser) {
+    return badRequest(res, 'User Already Exists!');
+  }
+
+  const passwordHash = await bcrypt.hash(password, 10);
+  const user = new userModel({
+    firstName,
+    lastName,
+    email,
+    password: passwordHash,
+    age,
+    gender,
+    about,
+    photoUrl,
+    skills,
+  });
+
   await user.save();
-  res.status(200).send('User added Successfully');
+  return success('User added Successfully!');
 };
