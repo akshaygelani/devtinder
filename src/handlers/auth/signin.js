@@ -1,4 +1,5 @@
 import { userModel } from '../../models/user.js';
+import { success, badRequest } from '../../utils/responses.js';
 
 export const signInHandler = async (req, res) => {
   const { email, password } = req.body;
@@ -6,12 +7,12 @@ export const signInHandler = async (req, res) => {
   // schema validations
   const existingUser = await userModel.findOne({ email: email });
   if (!existingUser) {
-    return res.status(400).send('Invalid Credentials!');
+    return badRequest(res, 'Invalid Credentials!');
   }
 
   let isPasswordCorrect = await existingUser.comparePassword(password);
   if (!isPasswordCorrect) {
-    return res.status(400).send('Invalid Credentials!');
+    return badRequest(res, 'Invalid Credentials!');
   }
 
   // get JWT from schema methods
@@ -22,6 +23,5 @@ export const signInHandler = async (req, res) => {
   res.cookie('access_token', access_token, {
     expires: new Date(Date.now() + 900000),
   });
-
-  res.status(200).send('Signin Successful!');
+  return success(res, 'Signin Successful!');
 };
