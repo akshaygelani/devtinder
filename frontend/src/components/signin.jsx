@@ -1,25 +1,32 @@
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../store/slices/user';
 import { API_BASE_URL } from '../utils/constants';
 
 function SignIn() {
   const [email, setEmail] = useState('akshay@gmail.com');
   const [password, setPassword] = useState('Akshay@123');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const signInHandler = async () => {
     try {
       const result = await axios.post(
         API_BASE_URL + '/auth/signin',
-        {
-          email,
-          password,
-        },
+        { email, password },
         { withCredentials: true }
       );
-      console.log(result.data);
+      dispatch(addUser(result.data?.data[0]));
+      navigate('/feed');
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const signUpHandler = () => {
+    navigate('/signup');
   };
 
   return (
@@ -55,7 +62,9 @@ function SignIn() {
             <button className='btn btn-success grow' onClick={signInHandler}>
               SignIn
             </button>
-            <button className='btn btn-neutral  grow'>Signup</button>
+            <button className='btn btn-neutral  grow' onClick={signUpHandler}>
+              Signup
+            </button>
           </div>
         </div>
       </div>
