@@ -1,4 +1,5 @@
 import express from 'express';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './src/config/database.js';
 import { PORT } from './src/utils/constants.js';
@@ -7,6 +8,12 @@ import { errorHandler } from './src/utils/errors/errorHandler.js';
 const app = express();
 
 // Middlewares to parse json and cookie from requests
+app.use(
+  cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
