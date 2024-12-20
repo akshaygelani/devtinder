@@ -5,6 +5,7 @@ import Body from './components/body';
 import SignUp from './components/signup';
 import SignIn from './components/signin';
 import Profile from './components/profile';
+import Feed from './components/feed';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path='/signup' element={<SignUp />} />
             <Route path='/signin' element={<SignIn />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/feed' element={<Feed />} />
           </Route>
         </Routes>
       </BrowserRouter>
