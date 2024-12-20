@@ -6,5 +6,12 @@ export default {
   theme: {
     extend: {},
   },
+  theme: {
+    extend: {
+      fontFamily: {
+        akshay: ['Inter', 'sans-serif'],
+      },
+    },
+  },
   plugins: [daisyui],
 };
