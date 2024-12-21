@@ -13,13 +13,6 @@ function Body() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const validateToken = () => {
-    const access_token = Cookies.get('access_token');
-    if (!access_token) {
-      navigate('/signin');
-    }
-  };
-
   const verifyProfile = async () => {
     if (!user) {
       try {
@@ -31,18 +24,23 @@ function Body() {
     }
   };
 
-  // first time app opens
   useEffect(() => {
-    validateToken();
+    if (!Cookies.get('access_token')) {
+      navigate('/signin');
+      return;
+    }
     verifyProfile();
     navigate('/feed');
 
     const intervalId = setInterval(() => {
-      validateToken();
+      if (!Cookies.get('access_token')) {
+        navigate('/signin');
+        clearInterval(intervalId);
+      }
     }, 1000);
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [navigate]);
 
   return (
     <div className='font-akshay'>

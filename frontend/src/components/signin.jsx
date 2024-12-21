@@ -30,17 +30,8 @@ function SignIn() {
     navigate('/signup');
   };
 
-  const validateToken = () => {
-    const access_token = Cookies.get('access_token');
-    if (!access_token) {
-      navigate('/signin');
-    } else {
-      navigate('/');
-    }
-  };
-
   useEffect(() => {
-    validateToken();
+    if (Cookies.get('access_token')) navigate('/');
   }, []);
 
   return (
