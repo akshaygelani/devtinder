@@ -1,12 +1,16 @@
-import { useSelector } from 'react-redux';
-import { Link } from 'react-router';
 import Cookies from 'js-cookie';
+import { Link } from 'react-router';
+import { removeUser } from '../store/slices/user';
+import { useDispatch, useSelector } from 'react-redux';
+
 function NavBar() {
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
 
   const logoutHandler = () => {
     // we can use logout endpoint as well
     Cookies.remove('access_token');
+    dispatch(removeUser());
   };
   return (
     <div className='navbar bg-base-300'>
