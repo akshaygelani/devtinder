@@ -2,13 +2,14 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import UserCard from './userCard';
 import { API_BASE_URL } from '../utils/constants';
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFeed } from '../store/slices/feed';
 import { useNavigate } from 'react-router';
 import { removeUser } from '../store/slices/user';
 
 function Feed() {
+  const [loading, setLoading] = useState(true);
   const feed = useSelector((store) => store.feed);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,6 +21,8 @@ function Feed() {
       dispatch(addFeed(res.data?.data));
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,9 +34,15 @@ function Feed() {
     }
     getFeed();
   }, []);
+
+  if (loading) {
+    return <div>Loading Feed...</div>;
+  }
+
+  if (feed.length === 0) return <p>No user available!</p>;
   return (
     feed && (
-      <div className='flex items-center m-auto'>
+      <div className='flex items-center h-5/6 mt-auto'>
         <UserCard user={feed[0]} />
       </div>
     )

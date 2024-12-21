@@ -1,5 +1,25 @@
+import axios from 'axios';
+import { API_BASE_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { removeFeed } from '../store/slices/feed';
+
 function UserCard({ user }) {
-  const { firstName, lastName, age, gender, photoUrl, about, skills } = user;
+  const dispatch = useDispatch();
+
+  const handleSendConnectionRequests = async (action, userId) => {
+    try {
+      const res = axios.post(
+        API_BASE_URL + '/request/send/' + userId,
+        { action },
+        { withCredentials: true }
+      );
+      dispatch(removeFeed(userId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const { _id, firstName, lastName, age, gender, photoUrl, about, skills } = user;
   return (
     <div className='card bg-base-100 w-96 h-full shadow-xl'>
       <figure>
@@ -22,9 +42,19 @@ function UserCard({ user }) {
         )}
 
         <div className='card-actions mt-auto flex flex-row'>
-          <button className='btn btn-primary grow'>Ignore</button>
+          <button
+            className='btn btn-primary grow'
+            onClick={() => handleSendConnectionRequests('ignored', _id)}
+          >
+            Ignore
+          </button>
 
-          <button className='btn btn-secondary grow'>Interested</button>
+          <button
+            className='btn btn-secondary grow'
+            onClick={() => handleSendConnectionRequests('interested', _id)}
+          >
+            Interested
+          </button>
         </div>
       </div>
     </div>
