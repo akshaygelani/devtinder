@@ -41,7 +41,7 @@ function Connections() {
   }
   return (
     <div className='flex flex-col items-center gap-5'>
-      <p className='text-xl mt-5'>Connections!!</p>
+      <p className='text-xl mt-5 text-base-300'>Connections!!</p>
       <div className='card bg-base-300 w-full shadow-xl'>
         <div className='p-5 pt-4 pb-4'>
           {connections.map((connection, index) => {

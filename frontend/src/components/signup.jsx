@@ -46,7 +46,7 @@ function SignUp() {
   }, []);
   return (
     <>
-      <div className='flex justify-center my-3'>
+      <div className='flex m-auto'>
         <div className='card  bg-base-300 w-96 shadow-xl'>
           <div className='card-body'>
             <h2 className='card-title justify-center'>Create account</h2>

@@ -46,10 +46,12 @@ function Body() {
   }, [navigate]);
 
   return (
-    <div className='font-akshay md:max-w-4xl flex items-center flex-col m-auto h-screen'>
-      <NavBar />
-      <Outlet />
-      <Footer />
+    <div className='bg-zinc-950'>
+      <div className='font-akshay md:max-w-4xl flex items-center flex-col m-auto h-screen bg-green-300'>
+        <NavBar />
+        <Outlet />
+        <Footer />
+      </div>
     </div>
   );
 }
