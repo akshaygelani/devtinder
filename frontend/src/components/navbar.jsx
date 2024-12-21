@@ -36,6 +36,9 @@ function NavBar() {
                 <Link to='/profile'>Profile</Link>
               </li>
               <li>
+                <Link to='/connections'>Connections</Link>
+              </li>
+              <li>
                 <a onClick={logoutHandler}>Logout</a>
               </li>
             </ul>
