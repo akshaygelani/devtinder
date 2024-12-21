@@ -46,7 +46,7 @@ function Body() {
   }, [navigate]);
 
   return (
-    <div className='font-akshay md:max-w-xl flex items-center flex-col m-auto h-screen'>
+    <div className='font-akshay md:max-w-4xl flex items-center flex-col m-auto h-screen'>
       <NavBar />
       <Outlet />
       <Footer />

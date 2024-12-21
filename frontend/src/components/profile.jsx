@@ -50,7 +50,7 @@ function Profile() {
 
   return (
     <>
-      <div className='flex flex-row justify-center my-3 gap-3'>
+      <div className='flex  flex-col md:flex-row justify-center my-3 gap-3'>
         <div className='card  bg-base-300 w-96 shadow-xl'>
           <div className='card-body'>
             <h2 className='card-title justify-center'>Update Profile</h2>
