@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation, useNavigate } from 'react-router';
 import { API_BASE_URL } from '../utils/constants';
-import { addUser } from '../store/slices/user';
+import { addUser, removeUser } from '../store/slices/user';
 import NavBar from './navbar';
 import Footer from './footer';
 
@@ -26,6 +26,7 @@ function Body() {
   useEffect(() => {
     if (pathname === '/signup') return;
     if (!Cookies.get('access_token')) {
+      dispatch(removeUser());
       navigate('/signin');
       return;
     }
@@ -34,6 +35,7 @@ function Body() {
 
     const intervalId = setInterval(() => {
       if (!Cookies.get('access_token')) {
+        dispatch(removeUser());
         navigate('/signin');
         clearInterval(intervalId);
       }

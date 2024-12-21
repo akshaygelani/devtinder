@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { useState } from 'react';
+import Cookies from 'js-cookie';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { API_BASE_URL } from '../utils/constants';
 
@@ -39,6 +40,10 @@ function SignUp() {
   const signInHandler = () => {
     navigate('/signin');
   };
+
+  useEffect(() => {
+    if (Cookies.get('access_token')) navigate('/feed');
+  }, []);
   return (
     <>
       <div className='flex justify-center my-3'>
