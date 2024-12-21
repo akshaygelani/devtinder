@@ -26,7 +26,7 @@ const connectionRequestSchema = new Schema(
 );
 
 // compound index
-connectionRequestSchema.index({ fromUserId: 1, toUserId: 1 });
+connectionRequestSchema.index({ fromUserId: 1, toUserId: 1 }, { unique: true });
 
 // Added for learning,- optional. we have already handled this in handler
 connectionRequestSchema.pre('save', function (next) {
