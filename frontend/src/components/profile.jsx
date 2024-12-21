@@ -91,12 +91,15 @@ function Profile() {
               <div className='label'>
                 <span className='label-text'>Gender</span>
               </div>
-              <input
-                type='text'
+              <select
                 value={gender}
-                className='input input-bordered w-full max-w-xs'
+                className='select select-bordered w-full max-w-xs'
                 onChange={(e) => setGender(e.target.value)}
-              />
+              >
+                <option value='male'>Male</option>
+                <option value='female'>Female</option>
+                <option value='other'>Other</option>
+              </select>
             </label>
             <label className='form-control w-full max-w-xs'>
               <div className='label'>

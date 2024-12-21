@@ -33,7 +33,7 @@ function Feed() {
   }, []);
   return (
     feed && (
-      <div className='flex justify-center mt-20'>
+      <div className='flex items-center m-auto'>
         <UserCard user={feed[0]} />
       </div>
     )

@@ -5,10 +5,10 @@ function UserCard({ user }) {
       <figure>
         <img src={photoUrl} alt='Profile Photo' className='w-100 h-100 object-cover' />
       </figure>
-      <div className='card-body'>
-        <h2 className='card-title'>{firstName + ' ' + lastName}</h2>
-        <p>{age + ' ' + gender}</p>
-        <p>{about}</p>
+      <div className='card-body p-5'>
+        <h2 className='card-title text-2xl'>{firstName + ' ' + lastName}</h2>
+        <p className='max-h-min'>{age + ', ' + gender}</p>
+        <p className='max-h-min'>{about}</p>
         {skills && (
           <div>
             <p>Skills: </p>
@@ -21,7 +21,7 @@ function UserCard({ user }) {
           </div>
         )}
 
-        <div className='card-actions justify-end flex flex-row mt-5'>
+        <div className='card-actions mt-auto flex flex-row'>
           <button className='btn btn-primary grow'>Ignore</button>
 
           <button className='btn btn-secondary grow'>Interested</button>
