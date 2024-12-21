@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 import { API_BASE_URL } from '../utils/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../store/slices/user';
-import { addRequests } from '../store/slices/requests';
+import { addRequests, removeRequest } from '../store/slices/requests';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 
@@ -26,6 +26,19 @@ function Requests() {
     }
   };
 
+  const reviewRequestHandler = async (action, requestId) => {
+    try {
+      await axios.post(
+        API_BASE_URL + '/request/review/' + requestId,
+        { action },
+        { withCredentials: true }
+      );
+      dispatch(removeRequest(requestId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     if (!Cookies.get('access_token')) {
       dispatch(removeUser());
@@ -42,7 +55,46 @@ function Requests() {
   if (requests.length === 0) {
     return <div>No pending requests available</div>;
   }
-  return <>Requests</>;
+  return (
+    <div className='flex flex-col items-center gap-5'>
+      <p className='text-xl mt-5'>Pending Requests</p>
+      <div className='card bg-base-300 w-full shadow-xl'>
+        <div className='p-5 pt-4 pb-4'>
+          {requests.map((request, index) => {
+            const { _id, firstName, lastName, photoUrl, age, gender, about } = request?.fromUserId;
+            return (
+              <div key={index}>
+                {index !== 0 && <div className='divider my-1'></div>}
+                <div className='flex flex-row flex-grow items-center justify-between gap-4'>
+                  <img src={photoUrl} className='w-24 h-24 rounded-full object-cover' />
+                  <div className='flex flex-col  justify-center items-start grow'>
+                    <h3>{firstName + ' ' + lastName}</h3>
+                    <p>{age + ', ' + gender}</p>
+                    <p className='truncate text-ellipse max-w-72'>{about}</p>
+                  </div>
+                  <div className='flex flex-col gap-y-2'>
+                    <button
+                      className='btn btn-secondary btn-sm'
+                      onClick={() => reviewRequestHandler('accepted', request._id)}
+                    >
+                      Accept
+                    </button>
+
+                    <button
+                      onClick={() => reviewRequestHandler('rejected', request._id)}
+                      className='btn btn-primary btn-sm'
+                    >
+                      Reject
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default Requests;
