@@ -39,12 +39,12 @@ function Profile() {
   };
   useEffect(() => {
     if (user) {
-      setFirstName(user.firstName);
-      setLastName(user.lastName);
-      setAge(user.age);
-      setGender(user.gender);
-      setPhotoUrl(user.photoUrl);
-      setAbout(user.about);
+      setFirstName(user.firstName || '');
+      setLastName(user.lastName || '');
+      setAge(user.age || '');
+      setGender(user.gender || '');
+      setPhotoUrl(user.photoUrl || '');
+      setAbout(user.about || '');
     }
   }, [user]);
 

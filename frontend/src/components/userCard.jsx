@@ -1,7 +1,7 @@
 function UserCard({ user }) {
   const { firstName, lastName, age, gender, photoUrl, about, skills } = user;
   return (
-    <div className='card bg-base-100 w-96 shadow-xl'>
+    <div className='card bg-base-100 w-96 h-full shadow-xl'>
       <figure>
         <img src={photoUrl} alt='Profile Photo' className='w-100 h-100 object-cover' />
       </figure>
