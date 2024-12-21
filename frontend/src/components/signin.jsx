@@ -1,6 +1,7 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../store/slices/user';
 import { API_BASE_URL } from '../utils/constants';
@@ -28,6 +29,19 @@ function SignIn() {
   const signUpHandler = () => {
     navigate('/signup');
   };
+
+  const validateToken = () => {
+    const access_token = Cookies.get('access_token');
+    if (!access_token) {
+      navigate('/signin');
+    } else {
+      navigate('/');
+    }
+  };
+
+  useEffect(() => {
+    validateToken();
+  }, []);
 
   return (
     <div className='flex justify-center my-3'>
