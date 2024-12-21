@@ -7,14 +7,19 @@ function UserCard({ user }) {
       </figure>
       <div className='card-body'>
         <h2 className='card-title'>{firstName + ' ' + lastName}</h2>
-        <p>{age + gender}</p>
+        <p>{age + ' ' + gender}</p>
         <p>{about}</p>
-        <p>Skills: </p>
-        <p className='flex flex-row'>
-          {skills.map((skill) => {
-            return <p>{skill}</p>;
-          })}
-        </p>
+        {skills && (
+          <div>
+            <p>Skills: </p>
+            <div className='flex flex-row'>
+              {skills &&
+                skills.map((skill, index) => {
+                  return <p key={index}>{skill}</p>;
+                })}
+            </div>
+          </div>
+        )}
 
         <div className='card-actions justify-end flex flex-row mt-5'>
           <button className='btn btn-primary grow'>Ignore</button>
