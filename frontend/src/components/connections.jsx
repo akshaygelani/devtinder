@@ -1,13 +1,17 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { API_BASE_URL } from '../utils/constants';
+import { removeUser } from '../store/slices/user';
 import { addConnections } from '../store/slices/connections';
+import { useNavigate } from 'react-router';
 
 function Connections() {
   const [loading, setLoading] = useState(true);
   const connections = useSelector((store) => store.connections);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getConnections = async () => {
     try {
@@ -21,6 +25,11 @@ function Connections() {
   };
 
   useEffect(() => {
+    if (!Cookies.get('access_token')) {
+      dispatch(removeUser());
+      navigate('/signin');
+      return;
+    }
     getConnections();
   }, []);
   if (loading) {
