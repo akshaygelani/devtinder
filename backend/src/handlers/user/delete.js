@@ -11,5 +11,5 @@ export const deleteUserHandler = async (req, res) => {
 
   await userModel.findByIdAndDelete(userId);
 
-  return accepted();
+  return accepted(res);
 };
