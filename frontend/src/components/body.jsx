@@ -31,7 +31,8 @@ function Body() {
       return;
     }
     verifyProfile();
-    navigate('/feed');
+
+    if (pathname === '/') navigate('/feed');
 
     const intervalId = setInterval(() => {
       if (!Cookies.get('access_token')) {
