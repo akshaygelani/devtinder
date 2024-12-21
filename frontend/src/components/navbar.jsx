@@ -1,12 +1,19 @@
 import { useSelector } from 'react-redux';
-
+import { Link } from 'react-router';
+import Cookies from 'js-cookie';
 function NavBar() {
   const user = useSelector((store) => store.user);
 
+  const logoutHandler = () => {
+    // we can use logout endpoint as well
+    Cookies.remove('access_token');
+  };
   return (
     <div className='navbar bg-base-300'>
       <div className='flex-1'>
-        <a className='btn btn-ghost text-xl'>DevTinder</a>
+        <Link to='/feed' className='btn btn-ghost text-xl'>
+          DevTinder
+        </Link>
       </div>
       {user && (
         <div className='flex-none gap-2'>
@@ -22,13 +29,10 @@ function NavBar() {
               className='menu menu-md dropdown-content bg-base-300 rounded-box z-[1] mt-3 w-52 p-2 shadow'
             >
               <li>
-                <a>Profile</a>
+                <Link to='/profile'>Profile</Link>
               </li>
               <li>
-                <a>Settings</a>
-              </li>
-              <li>
-                <a>Logout</a>
+                <a onClick={logoutHandler}>Logout</a>
               </li>
             </ul>
           </div>
