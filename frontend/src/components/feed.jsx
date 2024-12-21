@@ -35,10 +35,10 @@ function Feed() {
   }, []);
 
   if (loading) {
-    return <div>Loading Feed...</div>;
+    return <div className='text-xl mt-5 text-base-300'>Loading Feed...</div>;
   }
 
-  if (feed.length === 0) return <p>No user available!</p>;
+  if (feed.length === 0) return <p className='text-xl mt-5 text-base-300'>No user available!</p>;
   return (
     feed && (
       <div className='flex items-center h-5/6 mt-auto'>

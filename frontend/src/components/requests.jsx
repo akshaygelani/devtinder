@@ -49,15 +49,15 @@ function Requests() {
   }, []);
 
   if (loading) {
-    return <div>Loading requests...</div>;
+    return <div className='text-xl mt-5 text-base-300'>Loading requests...</div>;
   }
 
   if (requests.length === 0) {
-    return <div>No pending requests available</div>;
+    return <div className='text-xl mt-5 text-base-300'>No pending requests available</div>;
   }
   return (
-    <div className='flex flex-col items-center gap-5'>
-      <p className='text-xl mt-5'>Pending Requests</p>
+    <div className='flex flex-col items-center gap-5 mx-3 md:mx-0'>
+      <p className='text-xl mt-5 text-base-300'>Pending Requests</p>
       <div className='card bg-base-300 w-full shadow-xl'>
         <div className='p-5 pt-4 pb-4'>
           {requests.map((request, index) => {
@@ -70,7 +70,7 @@ function Requests() {
                   <div className='flex flex-col  justify-center items-start grow'>
                     <h3>{firstName + ' ' + lastName}</h3>
                     <p>{age + ', ' + gender}</p>
-                    <p className='truncate text-ellipse max-w-72'>{about}</p>
+                    <p className='truncate text-ellipse max-w-56 md:max-w-72'>{about}</p>
                   </div>
                   <div className='flex flex-col gap-y-2'>
                     <button

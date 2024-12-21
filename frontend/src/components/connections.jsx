@@ -33,14 +33,14 @@ function Connections() {
     getConnections();
   }, []);
   if (loading) {
-    return <div>Loading connections...</div>;
+    return <div className='text-xl mt-5 text-base-300'>Loading connections...</div>;
   }
 
   if (connections.length === 0) {
-    return <div>No connections available</div>;
+    return <div className='text-xl mt-5 text-base-300'>No connections available</div>;
   }
   return (
-    <div className='flex flex-col items-center gap-5'>
+    <div className='flex flex-col items-center gap-5 mx-3 md:mx-0'>
       <p className='text-xl mt-5 text-base-300'>Connections!!</p>
       <div className='card bg-base-300 w-full shadow-xl'>
         <div className='p-5 pt-4 pb-4'>
@@ -54,7 +54,7 @@ function Connections() {
                   <div className='flex flex-col  justify-center items-start grow'>
                     <h3>{firstName + ' ' + lastName}</h3>
                     <p>{age + ', ' + gender}</p>
-                    <p className='truncate text-ellipse max-w-72'>{about}</p>
+                    <p className='truncate text-ellipse max-w-56 md:max-w-72'>{about}</p>
                   </div>
                 </div>
               </div>
