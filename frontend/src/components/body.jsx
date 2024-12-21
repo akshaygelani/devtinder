@@ -2,7 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Outlet, useNavigate } from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import { API_BASE_URL } from '../utils/constants';
 import { addUser } from '../store/slices/user';
 import NavBar from './navbar';
@@ -12,7 +12,7 @@ function Body() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const { pathname } = useLocation();
   const verifyProfile = async () => {
     if (!user) {
       try {
@@ -23,8 +23,8 @@ function Body() {
       }
     }
   };
-
   useEffect(() => {
+    if (pathname === '/signup') return;
     if (!Cookies.get('access_token')) {
       navigate('/signin');
       return;
