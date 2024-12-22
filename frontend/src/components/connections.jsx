@@ -52,9 +52,9 @@ function Connections() {
                 <div className='flex flex-row flex-grow items-center gap-4' key={index}>
                   <img src={photoUrl} className='w-24 h-24 rounded-full object-cover' />
                   <div className='flex flex-col  justify-center items-start grow'>
-                    <h3>{firstName + ' ' + lastName}</h3>
-                    <p>{age + ', ' + gender}</p>
-                    <p className='truncate text-ellipse max-w-56 md:max-w-72'>{about}</p>
+                    {firstName && lastName && <h3>{firstName + ' ' + lastName}</h3>}
+                    {age && gender && <p>{age + ', ' + gender}</p>}
+                    {about && <p className='truncate text-ellipse max-w-56 md:max-w-72'>{about}</p>}
                   </div>
                 </div>
               </div>
