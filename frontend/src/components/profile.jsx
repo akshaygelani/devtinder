@@ -132,7 +132,10 @@ function Profile() {
             </div>
           </div>
         </div>
-        <UserCard user={{ firstName, lastName, age, gender, photoUrl, about }} />
+        <UserCard
+          user={{ firstName, lastName, age, gender, photoUrl, about }}
+          isUsedInsideProfile={true}
+        />
       </div>
       <div className='toast toast-top toast-center'>
         {showErrorToast && (

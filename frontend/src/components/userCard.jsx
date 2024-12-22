@@ -3,7 +3,7 @@ import { API_BASE_URL } from '../utils/constants';
 import { useDispatch } from 'react-redux';
 import { removeFeed } from '../store/slices/feed';
 
-function UserCard({ user }) {
+function UserCard({ user, isUsedInsideProfile = false }) {
   const dispatch = useDispatch();
 
   const handleSendConnectionRequests = async (action, userId) => {
@@ -43,14 +43,22 @@ function UserCard({ user }) {
 
         <div className='card-actions mt-auto flex flex-row'>
           <button
-            className='btn btn-primary grow'
+            className={
+              isUsedInsideProfile
+                ? 'btn btn-primary grow pointer-events-none'
+                : 'btn btn-primary grow'
+            }
             onClick={() => handleSendConnectionRequests('ignored', _id)}
           >
             Ignore
           </button>
 
           <button
-            className='btn btn-secondary grow'
+            className={
+              isUsedInsideProfile
+                ? 'btn btn-secondary grow pointer-events-none'
+                : 'btn btn-secondary grow'
+            }
             onClick={() => handleSendConnectionRequests('interested', _id)}
           >
             Interested
