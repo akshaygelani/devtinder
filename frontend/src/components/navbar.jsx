@@ -1,16 +1,22 @@
 import Cookies from 'js-cookie';
+import axios from 'axios';
 import { Link } from 'react-router';
 import { removeUser } from '../store/slices/user';
 import { useDispatch, useSelector } from 'react-redux';
+import { API_BASE_URL } from '../utils/constants';
 
 function NavBar() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
-  const logoutHandler = () => {
-    // we can use logout endpoint as well
-    Cookies.remove('access_token');
-    dispatch(removeUser());
+  const logoutHandler = async () => {
+    try {
+      await axios.post(API_BASE_URL + '/auth/signout', {}, { withCredentials: true });
+    } catch (error) {
+      console.error(error);
+    } finally {
+      dispatch(removeUser());
+    }
   };
   return (
     <div className='navbar bg-base-300'>
