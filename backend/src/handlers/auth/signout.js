@@ -6,6 +6,7 @@ const cookieDomain = url.hostname;
 export const signOutHandler = (req, res) => {
   res.cookie('access_token', null, {
     domain: cookieDomain,
+    path: '/',
     sameSite: 'none',
     secure: true,
     expires: new Date(Date.now()),
