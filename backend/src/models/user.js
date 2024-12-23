@@ -56,7 +56,7 @@ const userSchema = new Schema(
       type: String,
       maxLength: 500,
       trim: true,
-      default: 'https://akshaygelani.me/assets/images/profile.webp',
+      default: 'https://placehold.co/400x500.png',
       validate: {
         validator: (url) => validator.isURL(url),
       },
@@ -69,7 +69,7 @@ const userSchema = new Schema(
         },
       ],
       trim: true,
-      default: ['Javascript', 'Coding', 'Problem Solving'],
+      default: ['Coding', 'Problem Solving'],
       validate: {
         validator: (arr) => {
           return arr.length < 11;

@@ -2,15 +2,16 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { connectDB } from './src/config/database.js';
-import { PORT } from './src/utils/constants.js';
+import { FRONTEND_BASE_URL, PORT } from './src/utils/constants.js';
 import { authRouter, profileRouter, requestRouter, userRouter } from './src/routes/index.js';
 import { errorHandler } from './src/utils/errors/errorHandler.js';
+
 const app = express();
 
 // Middlewares to parse json and cookie from requests
 app.use(
   cors({
-    origin: 'http://localhost:5173',
+    origin: FRONTEND_BASE_URL,
     credentials: true,
   })
 );
