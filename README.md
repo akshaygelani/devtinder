@@ -4,14 +4,18 @@ DevTinder is a MERN stack-based application that connects like-minded developers
 
 ## Table of Contents 📚
 
-- [Features](#features) ✨
-- [Tech Stack](#tech-stack) 🛠️
-- [Setup and Installation](#setup-and-installation) 🏗️
-  - [Running the Development Server](#running-the-development-server) 🚀
-  - [Building the Project](#building-the-project) 🏢
-- [Upcoming Features](#upcoming-features) 🌟
-- [Contributing](#contributing) 🤝
-- [License](#license) 📜
+- [Features](#features-🎯)
+- [Tech Stack](#tech-stack-🛠️)
+- [Setup and Installation](#setup-and-installation-🏗️)
+  - [Prerequisites](#prerequisites-📋)
+  - [Clone the Repository](#clone-the-repository-📂)
+  - [Install Dependencies](#install-dependencies-🔧)
+  - [Environment Variables](#environment-variables-🔑)
+  - [Running the Development Server](#running-the-development-server-🚀)
+  - [Building the Project](#building-the-project-🚀)
+- [Upcoming Features](#upcoming-features-🌟)
+- [Contributing](#contributing-🤝)
+- [License](#license-📜)
 
 ## Features 🎯
 
@@ -43,7 +47,7 @@ Follow these steps to get the project running on your local machine:
 
 ### Clone the Repository 📂
 
-````bash
+```bash
 git clone https://github.com/akshaygelani/devtinder.git
 cd devtinder
 ```
@@ -55,7 +59,7 @@ cd devtinder
 ```bash
 cd backend
 npm install
-````
+```
 
 #### For the Frontend
 
@@ -99,7 +103,7 @@ cd frontend
 npm run build
 ```
 
-This will generate a production-ready build of the frontend in the `build` folder.
+This will generate a production-ready build of the frontend in the `dist` folder.
 
 ## Upcoming Features 🌟
 
