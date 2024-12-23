@@ -8,7 +8,7 @@ function UserCard({ user, isUsedInsideProfile = false }) {
 
   const handleSendConnectionRequests = async (action, userId) => {
     try {
-      const res = axios.post(
+      await axios.post(
         API_BASE_URL + '/request/send/' + userId,
         { action },
         { withCredentials: true }

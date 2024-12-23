@@ -20,7 +20,7 @@ function Requests() {
       });
       dispatch(addRequests(res.data?.data));
     } catch (error) {
-      console.log(error);
+      console.error(error);
     } finally {
       setLoading(false);
     }
