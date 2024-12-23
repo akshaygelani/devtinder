@@ -7,8 +7,8 @@ import { addUser } from '../store/slices/user';
 import { API_BASE_URL } from '../utils/constants';
 
 function SignIn() {
-  const [email, setEmail] = useState('akshay@gmail.com');
-  const [password, setPassword] = useState('Akshay@123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
