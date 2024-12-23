@@ -13,8 +13,6 @@ DevTinder is a MERN stack-based application that connects like-minded developers
 - [Contributing](#contributing) 🤝
 - [License](#license) 📜
 
----
-
 ## Features 🎯
 
 - ✅ User can create an account.
@@ -27,16 +25,12 @@ DevTinder is a MERN stack-based application that connects like-minded developers
 - ✅ Edit profile details on the Profile page.
 - ✅ Securely sign out.
 
----
-
 ## Tech Stack 🛠️
 
 - **Frontend**: React.js, Redux ⚛️
 - **Backend**: Node.js, Express.js 🌐
 - **Database**: MongoDB, Mongoose 🗄️
 - **Authentication**: JWT 🔐
-
----
 
 ## Setup and Installation 🏗️
 
@@ -75,8 +69,6 @@ npm install
 - Create a `.env` file in the `backend` and `frontend` directory
 - Refer `.env.sample` in the respective directory
 
----
-
 ### Running the Development Server 🚀
 
 #### Start the Backend
@@ -98,8 +90,6 @@ By default:
 - Backend runs at `http://localhost:3000`
 - Frontend runs at `http://localhost:3001`
 
----
-
 ### Building the Project 🚀
 
 #### For the Frontend
@@ -111,16 +101,12 @@ npm run build
 
 This will generate a production-ready build of the frontend in the `build` folder.
 
----
-
 ## Upcoming Features 🌟
 
 - [ ] Real-time chat with connections. 💬
 - [ ] Personalized feed suggestions based on skills and interest. 🤖
 - [ ] Notifications for new connection requests. 🔔
 - [ ] Many more to come... 🚀
-
----
 
 ## Contributing 🤝
 
@@ -132,12 +118,8 @@ Contributions are welcome! If you’d like to contribute, follow these steps:
 4. Push to the branch (`git push origin feature/your-feature-name`). 📤
 5. Open a pull request. 🔁
 
----
-
 ## License 📜
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
----
 
 Happy Coding!
