@@ -21,6 +21,7 @@ function App() {
             <Route path='/feed' element={<Feed />} />
             <Route path='/connections' element={<Connections />} />
             <Route path='/requests' element={<Requests />} />
+            <Route path='*' element={<Navigate to='/' />} />
           </Route>
         </Routes>
       </BrowserRouter>
