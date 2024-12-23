@@ -1,14 +1,10 @@
 import { success } from '../../utils/responses.js';
-import { FRONTEND_BASE_URL } from '../../utils/constants.js';
-const url = new URL(FRONTEND_BASE_URL);
-const cookieDomain = url.hostname;
+import { IS_PROD, FRONTEND_HOSTNAME } from '../../utils/constants.js';
 
 export const signOutHandler = (req, res) => {
   res.cookie('access_token', null, {
-    domain: cookieDomain,
-    path: '/',
-    sameSite: 'none',
-    secure: true,
+    domain: FRONTEND_HOSTNAME,
+    secure: IS_PROD,
     expires: new Date(Date.now()),
   });
   return success(res, 'Logged out!!');
