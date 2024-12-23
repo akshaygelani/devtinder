@@ -25,7 +25,6 @@ export const signInHandler = async (req, res) => {
   // Add cookie in Response
   // cookie expire after 15 min
   res.cookie('access_token', access_token, {
-    domain: cookieDomain,
     sameSite: 'none',
     secure: true,
     expires: new Date(Date.now() + 900000),
