@@ -46,7 +46,7 @@ Follow these steps to get the project running on your local machine:
 ````bash
 git clone https://github.com/akshaygelani/devtinder.git
 cd devtinder
-
+```
 
 ### Install Dependencies 🔧
 
