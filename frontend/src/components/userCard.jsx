@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { API_BASE_URL } from '../utils/constants';
+import { showLoading, hideLoading } from '../utils/helpers';
 import { useDispatch } from 'react-redux';
 import { removeFeed } from '../store/slices/feed';
 
@@ -7,6 +8,7 @@ function UserCard({ user, isUsedInsideProfile = false }) {
   const dispatch = useDispatch();
 
   const handleSendConnectionRequests = async (action, userId) => {
+    showLoading();
     try {
       await axios.post(
         API_BASE_URL + '/request/send/' + userId,
@@ -15,7 +17,10 @@ function UserCard({ user, isUsedInsideProfile = false }) {
       );
       dispatch(removeFeed(userId));
     } catch (error) {
+      hideLoading();
       console.error(error);
+    } finally {
+      hideLoading();
     }
   };
 

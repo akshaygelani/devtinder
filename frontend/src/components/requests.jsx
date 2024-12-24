@@ -31,6 +31,7 @@ function Requests() {
   };
 
   const reviewRequestHandler = async (action, requestId) => {
+    showLoading();
     try {
       await axios.post(
         API_BASE_URL + '/request/review/' + requestId,
@@ -39,7 +40,10 @@ function Requests() {
       );
       dispatch(removeRequest(requestId));
     } catch (error) {
+      hideLoading();
       console.error(error);
+    } finally {
+      hideLoading();
     }
   };
 
