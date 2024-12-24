@@ -15,6 +15,7 @@ function getRealIp(req) {
 export const RATE_LIMIT_CONFIG = {
   windowMs: env.WINDOW_MS,
   limit: env.LIMIT,
+  keyGenerator: (req) => getRealIp(req),
   handler: (req, res) => {
     const clientIp = getRealIp(req);
     console.log(`Rate limit exceeded for IP: ${clientIp}`);
