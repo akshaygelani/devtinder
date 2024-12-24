@@ -7,6 +7,7 @@ import { API_BASE_URL } from '../utils/constants';
 import { addUser, removeUser } from '../store/slices/user';
 import NavBar from './navbar';
 import Footer from './footer';
+import LoadingModal from './loadingModal';
 
 function Body() {
   const user = useSelector((store) => store.user);
@@ -49,6 +50,7 @@ function Body() {
     <div className='bg-zinc-950'>
       <div className='font-akshay md:max-w-4xl flex items-center flex-col m-auto h-screen bg-green-300'>
         <NavBar />
+        <LoadingModal />
         <Outlet />
         <Footer />
       </div>
