@@ -2,6 +2,8 @@
 
 DevTinder is a MERN stack-based application that connects like-minded developers. Inspired by Tinder, it allows developers to interact, connect, and build meaningful professional relationships.
 
+[Try DevTinder 🚀](https://devtinder.akshaygelani.me)
+
 ## Table of Contents 📚
 
 - [Features](#features-🎯)
