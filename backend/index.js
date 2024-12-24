@@ -8,6 +8,7 @@ import { authRouter, profileRouter, requestRouter, userRouter } from './src/rout
 import { errorHandler } from './src/utils/errors/errorHandler.js';
 
 const app = express();
+app.set('trust proxy', 1);
 
 const limiter = rateLimit(RATE_LIMIT_CONFIG);
 // Middleware for rate limiting
