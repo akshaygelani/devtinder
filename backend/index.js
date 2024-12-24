@@ -1,12 +1,17 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import { rateLimit } from 'express-rate-limit';
 import { connectDB } from './src/config/database.js';
-import { FRONTEND_BASE_URL, PORT } from './src/utils/constants.js';
+import { FRONTEND_BASE_URL, PORT, RATE_LIMIT_CONFIG } from './src/utils/constants.js';
 import { authRouter, profileRouter, requestRouter, userRouter } from './src/routes/index.js';
 import { errorHandler } from './src/utils/errors/errorHandler.js';
 
 const app = express();
+
+const limiter = rateLimit(RATE_LIMIT_CONFIG);
+// Middleware for rate limiting
+app.use(limiter);
 
 // Middlewares to parse json and cookie from requests
 app.use(
