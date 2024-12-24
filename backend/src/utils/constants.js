@@ -11,7 +11,10 @@ export const FRONTEND_HOSTNAME = url.hostname;
 export const RATE_LIMIT_CONFIG = {
   windowMs: env.WINDOW_MS,
   limit: env.LIMIT,
-  onLimitReached: (req, res, options) => {
+  handler: (req, res) => {
     console.log(`Rate limit exceeded for IP: ${req.ip}`);
+    return res.status(429).json({
+      error: 'Too many requests, please try again later.',
+    });
   },
 };
