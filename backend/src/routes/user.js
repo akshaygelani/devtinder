@@ -11,6 +11,7 @@ import {
 } from '../handlers/user/index.js';
 import { verifyAuthentication } from '../middleware/authentication.js';
 import { asyncHandler } from '../utils/errors/asyncHandler.js';
+import { IS_PROD } from '../utils/constants.js';
 
 export const userRouter = express.Router();
 
@@ -21,8 +22,11 @@ userRouter.use('/', asyncHandler(verifyAuthentication));
 userRouter.get('/connections', asyncHandler(getConnectionsHandler));
 userRouter.get('/requests/pending', asyncHandler(getPendingRequestsHandler));
 userRouter.get('/feed', asyncHandler(getUserFeedHandler));
-userRouter.post('/', asyncHandler(postUserHandler));
-userRouter.get('/', asyncHandler(listUserHandler));
-userRouter.get('/:userId', asyncHandler(getUserHandler));
-userRouter.delete('/:userId', asyncHandler(deleteUserHandler));
-userRouter.patch('/:userId', asyncHandler(patchUserHandler));
+
+if (!IS_PROD) {
+  userRouter.post('/', asyncHandler(postUserHandler));
+  userRouter.get('/', asyncHandler(listUserHandler));
+  userRouter.get('/:userId', asyncHandler(getUserHandler));
+  userRouter.delete('/:userId', asyncHandler(deleteUserHandler));
+  userRouter.patch('/:userId', asyncHandler(patchUserHandler));
+}
