@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { API_BASE_URL } from '../utils/constants';
+import { showLoading, hideLoading } from '../utils/helpers';
 
 function SignUp() {
   const [firstName, setFirstName] = useState('');
@@ -16,6 +17,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const signUpHandler = async () => {
+    showLoading();
     setError('');
     try {
       await axios.post(
@@ -28,12 +30,15 @@ function SignUp() {
         setSuccessToast(false);
       }, 3000);
     } catch (error) {
+      hideLoading();
       setErrorToast(true);
       setError(error.response?.data?.message);
       setTimeout(() => {
         setErrorToast(false);
       }, 3000);
       console.error(error);
+    } finally {
+      hideLoading();
     }
   };
 

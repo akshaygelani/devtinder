@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../store/slices/user';
 import { API_BASE_URL } from '../utils/constants';
+import { showLoading, hideLoading } from '../utils/helpers';
 
 function SignIn() {
   const [email, setEmail] = useState('');
@@ -13,6 +14,7 @@ function SignIn() {
   const navigate = useNavigate();
 
   const signInHandler = async () => {
+    showLoading();
     try {
       const result = await axios.post(
         API_BASE_URL + '/auth/signin',
@@ -22,7 +24,10 @@ function SignIn() {
       dispatch(addUser(result.data?.data[0]));
       navigate('/feed');
     } catch (error) {
+      hideLoading();
       console.error(error);
+    } finally {
+      hideLoading();
     }
   };
 
