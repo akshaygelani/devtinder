@@ -101,7 +101,7 @@ function Profile() {
                 className='select select-bordered w-full max-w-xs'
                 onChange={(e) => setGender(e.target.value)}
               >
-                <option disabled selected>
+                <option disabled selected value=''>
                   Select Gender
                 </option>
                 <option value='male'>Male</option>
