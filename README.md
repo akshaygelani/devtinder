@@ -113,6 +113,9 @@ This will generate a production-ready build of the frontend in the `dist` folder
 
 ## Upcoming Features 🌟
 
+- [ ] More validations and data sanitization in APIs
+- [ ] Frontend Input validations
+- [ ] Adding API Tests and UI Tests
 - [ ] Real-time chat with connections. 💬
 - [ ] Personalized feed suggestions based on skills and interest. 🤖
 - [ ] Notifications for new connection requests. 🔔
