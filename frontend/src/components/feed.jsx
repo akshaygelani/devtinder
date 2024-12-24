@@ -2,6 +2,7 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import UserCard from './userCard';
 import { API_BASE_URL } from '../utils/constants';
+import { showLoading, hideLoading } from '../utils/helpers';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFeed } from '../store/slices/feed';
@@ -15,12 +16,15 @@ function Feed() {
   const navigate = useNavigate();
 
   const getFeed = async () => {
+    showLoading();
     try {
       const res = await axios.get(API_BASE_URL + '/user/feed', { withCredentials: true });
       dispatch(addFeed(res.data?.data));
     } catch (error) {
+      hideLoading();
       console.error(error);
     } finally {
+      hideLoading();
       setLoading(false);
     }
   };

@@ -3,6 +3,7 @@ import Cookies from 'js-cookie';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { API_BASE_URL } from '../utils/constants';
+import { showLoading, hideLoading } from '../utils/helpers';
 import { removeUser } from '../store/slices/user';
 import { addConnections } from '../store/slices/connections';
 import { useNavigate } from 'react-router';
@@ -14,12 +15,15 @@ function Connections() {
   const navigate = useNavigate();
 
   const getConnections = async () => {
+    showLoading();
     try {
       const res = await axios.get(API_BASE_URL + '/user/connections', { withCredentials: true });
       dispatch(addConnections(res.data?.data));
     } catch (error) {
+      hideLoading();
       console.error(error);
     } finally {
+      hideLoading();
       setLoading(false);
     }
   };

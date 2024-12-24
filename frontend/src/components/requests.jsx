@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { API_BASE_URL } from '../utils/constants';
+import { showLoading, hideLoading } from '../utils/helpers';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../store/slices/user';
 import { addRequests, removeRequest } from '../store/slices/requests';
@@ -14,14 +15,17 @@ function Requests() {
   const navigate = useNavigate();
 
   const getRequests = async () => {
+    showLoading();
     try {
       const res = await axios.get(API_BASE_URL + '/user/requests/pending', {
         withCredentials: true,
       });
       dispatch(addRequests(res.data?.data));
     } catch (error) {
+      hideLoading();
       console.error(error);
     } finally {
+      hideLoading();
       setLoading(false);
     }
   };

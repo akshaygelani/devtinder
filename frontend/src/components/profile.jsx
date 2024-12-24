@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import UserCard from './userCard';
 import axios from 'axios';
 import { API_BASE_URL } from '../utils/constants';
+import { showLoading, hideLoading } from '../utils/helpers';
 import { addUser } from '../store/slices/user';
 
 function Profile() {
@@ -20,6 +21,7 @@ function Profile() {
   const [showErrorToast, setErrorToast] = useState(false);
 
   const updateProfile = async () => {
+    showLoading();
     try {
       setError(false);
       const payload = { firstName, lastName, age: age, gender, photoUrl, about };
@@ -30,11 +32,14 @@ function Profile() {
         setSuccessToast(false);
       }, 2000);
     } catch (error) {
+      hideLoading();
       setError(error.response?.data?.message);
       setErrorToast(true);
       setTimeout(() => {
         setErrorToast(false);
       }, 3000);
+    } finally {
+      hideLoading();
     }
   };
   useEffect(() => {

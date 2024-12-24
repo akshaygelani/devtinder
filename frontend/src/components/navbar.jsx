@@ -4,17 +4,21 @@ import { Link } from 'react-router';
 import { removeUser } from '../store/slices/user';
 import { useDispatch, useSelector } from 'react-redux';
 import { API_BASE_URL } from '../utils/constants';
+import { hideLoading, showLoading } from '../utils/helpers';
 
 function NavBar() {
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
 
   const logoutHandler = async () => {
+    showLoading();
     try {
       await axios.post(API_BASE_URL + '/auth/signout', {}, { withCredentials: true });
     } catch (error) {
+      hideLoading();
       console.error(error);
     } finally {
+      hideLoading();
       dispatch(removeUser());
     }
   };
